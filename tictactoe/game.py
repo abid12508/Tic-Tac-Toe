@@ -44,6 +44,11 @@ class Game:
         elif np.all(np.diagonal(np.fliplr(matrix)) == matrix[0, -1]) and matrix[0, -1] != 0:
             print(f"\nGame Over! {'X' if matrix[0, -1] == 1 else 'O'} wins")
             self.new_Game()
+        
+        # Check if draw
+        if 0 not in self.grid:
+            print("\nDraw")
+            self.new_Game()
     
     #mark a spot x or o
     def mark(self, buttonlist, pos):
