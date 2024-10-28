@@ -1,6 +1,4 @@
 import numpy as np
-import time as t
-import window as w
 
 class Game:
     def __init__(self, buttonlist):
@@ -8,7 +6,7 @@ class Game:
         self.grid = [0] * 9
         self.buttonlist = buttonlist
 
-
+    #for every button, remove the text
     def reset_Button(self):
         for button in self.buttonlist:
             button["text"] = " "
@@ -53,12 +51,15 @@ class Game:
     #mark a spot x or o
     def mark(self, buttonlist, pos):
 
+        #dont do anything if the spot is already taken
         if buttonlist[pos]["text"] != " ":
             pass
+        #if it is X turn, both grid and UI marked with 1 and X respectively
         elif self.turn % 2 == 0:
             buttonlist[pos]["text"] = "X"
             self.grid[pos] = 1
             self.turn += 1
+        #else, mark it 2 and O
         else:
             buttonlist[pos]["text"] = "O"
             self.grid[pos] = 2
